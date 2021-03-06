@@ -20,5 +20,10 @@ public class StudentsController {
         model.addAttribute("students",students);
         return "students-main";
     }
+
+    @GetMapping("/Students/add")
+    public String studentsAdd(Model model){
+        return "students-add";
+    }
 }
 
