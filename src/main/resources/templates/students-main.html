@@ -14,14 +14,11 @@
         <h3 th:text="${el.second_name} + '   ' + ${el.patronymic}"/>
         <a th:href="'/students/' + ${el.id}" class="btn btn-warning">More</a>
     </div>
-
-    <div class="container mt-5">
-        <p class="float-left">
-            <a href="/Students/add"> ZHOPA</a>
-        </p>
-    </div>
 </div>
 
+<div class="container mt-5">
+    <a class="btn btn-secondary " href="/Students/add" role="button">Add student</a>
+</div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>
