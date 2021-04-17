@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -39,17 +40,22 @@
     </script>
 </head>
 
-<div class="container mt-5 mp-5">
-    <h1>Add student</h1>
-    <form name="addStudentForm" action="/students/add" onsubmit="return validateForm()" method="post">
-        <input type="text" name="first_name" placeholder="Input first name" class="form-control"><br>
-        <input type="text" name="second_name" placeholder="Input second name" class="form-control"><br>
-        <input type="text" name="patronymic" placeholder="Input patronymic" class="form-control"><br>
-        <input type="number" name="balance" placeholder="Input student's balance" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Add student</button>
-    </form>
+<div class="container mt-5">
+    <div th:each="el : ${student}" class="alert alert-info mt-2"> <!-- Такой же как и в контроллере -->
+        <p th:text="${el.first_name}"/>
+        <p th:text="${el.second_name}"/>
+        <p th:text="${el.patronymic}"/>
+        <p th:text="${el.balance}"/>
+        <a th:href="'/students/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
+        <form th:action="'/students/' + ${el.id} + '/delete'" method="post">
+            <button class="btn btn-warning" type="submit">Delete</button>
+        </form>
+    </div>
 </div>
 
+<div class="container mt-5">
+    <a class="btn btn-secondary " href="/students/add" role="button">Add student</a>
+</div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

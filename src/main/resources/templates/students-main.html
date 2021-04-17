@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,14 +11,14 @@
 
 <div class="container mt-5">
     <h1>Students screen</h1>
-    <div th:each="el : ${students}" class="alert alert-info mt-2">
-        <h3 th:text="${el.second_name} + '   ' + ${el.patronymic}"/>
+    <div th:each="el : ${students}" class="alert alert-info mt-5">
+        <h3 th:text="${el.first_name} + '   ' + ${el.second_name}"/>
         <a th:href="'/students/' + ${el.id}" class="btn btn-warning">More</a>
     </div>
 </div>
 
 <div class="container mt-5">
-    <a class="btn btn-secondary " href="/Students/add" role="button">Add student</a>
+    <a class="btn btn-secondary " href="/students/add" role="button">Add student</a>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>

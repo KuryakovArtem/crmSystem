@@ -10,6 +10,13 @@
 
 <div class="container mt-5">
     <h1>Instructors screen</h1>
+    <div th:each="el : ${instructors}" class="alert alert-info mt-2">
+        <h3 th:text="el.first_name"></h3>
+        <h3 th:text="el.second_name"></h3>
+        <h3 th:text="el.patronymic"></h3>
+        <h3 th:text="el.type_of_licence"></h3>
+        <a th:href="'/instructor/' + ${el.id}">More</a>
+    </div>
 </div>
 
 <div th:insert="blocks/footer :: footer"></div>
