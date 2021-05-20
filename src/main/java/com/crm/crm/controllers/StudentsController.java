@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -75,8 +73,7 @@ public class StudentsController {
                                      @RequestParam String second_name,
                                      @RequestParam String patronymic,
                                      @RequestParam Integer balance,
-                                     Model model)
-    {
+                                     Model model){
        Students student = studentsRepository.findById(id).orElseThrow();
        student.setFirst_name(first_name);
        student.setSecond_name(second_name);
@@ -96,7 +93,5 @@ public class StudentsController {
 
         return "redirect:/students";
     }
-
-
 }
 

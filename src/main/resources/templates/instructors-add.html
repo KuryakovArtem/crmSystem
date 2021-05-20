@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Students screen</title>
+    <title>Instructors screen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -11,10 +11,10 @@
 <head>
     <script>
         function validateForm() {
-          var first_name = document.forms["addStudentForm"]["first_name"].value;
-          var second_name = document.forms["addStudentForm"]["second_name"].value;
-          var patronymic = document.forms["addStudentForm"]["patronymic"].value;
-          var balance = document.forms["addStudentForm"]["balance"].value;
+          var first_name = document.forms["addInstructorForm"]["first_name"].value;
+          var second_name = document.forms["addInstructorForm"]["second_name"].value;
+          var patronymic = document.forms["addInstructorForm"]["patronymic"].value;
+          var driver_license = document.forms["addInstructorForm"]["driver_license"].value;
 
           if (first_name == "" || first_name == null) {
             alert("Empty field for name");
@@ -31,7 +31,7 @@
             return false;
           }
 
-          if (balance == "" || balance == null) {
+          if (type_of_licence == "" || type_of_licence == null) {
             alert("Empty field for balance");
             return false;
           }
@@ -40,13 +40,13 @@
 </head>
 
 <div class="container mt-5 mp-5">
-    <h1>Add student</h1>
-    <form name="addStudentForm" action="/students/add" onsubmit="return validateForm()" method="post">
+    <h1>Add instructor</h1>
+    <form name="addInstructorForm" action="/instructors/add" onsubmit="return validateForm()" method="post">
         <input type="text" name="first_name" placeholder="Input first name" class="form-control"><br>
         <input type="text" name="second_name" placeholder="Input second name" class="form-control"><br>
         <input type="text" name="patronymic" placeholder="Input patronymic" class="form-control"><br>
-        <input type="number" name="balance" placeholder="Input student's balance" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Add student</button>
+        <input type="text" name="type_of_licence" placeholder="Input driver license category" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Add instructor</button>
     </form>
 </div>
 

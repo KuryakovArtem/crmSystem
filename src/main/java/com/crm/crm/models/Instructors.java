@@ -16,6 +16,7 @@ public class Instructors {
     private String patronymic;
     private String type_of_licence;
 
+
     public Long getId() {
         return id;
     }
@@ -53,6 +54,15 @@ public class Instructors {
     }
 
     public void setType_of_licence(String type_of_licence) {
+        this.type_of_licence = type_of_licence;
+    }
+
+    public Instructors(){}
+
+    public Instructors(String first_name, String second_name, String patronymic, String type_of_licence){
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.patronymic = patronymic;
         this.type_of_licence = type_of_licence;
     }
 }
