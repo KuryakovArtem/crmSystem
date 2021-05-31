@@ -1,9 +1,8 @@
 package com.crm.crm.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.crm.crm.entity.UserRole;
+
+import javax.persistence.*;
 
 @Entity
 public class Students {
@@ -11,8 +10,12 @@ public class Students {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String first_name, second_name, patronymic;
+    private String first_name;
+    private String second_name;
+    private String patronymic;
     private Integer balance;
+    @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "students", joinColumns = @JoinColumn(name = "id"))
 
     public Long getId() {
         return id;
