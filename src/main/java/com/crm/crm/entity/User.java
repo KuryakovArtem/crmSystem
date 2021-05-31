@@ -27,6 +27,7 @@ public class User{
     private String userPatronymic;
     private String email;
     private String password;
+    private String userRole;
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -105,6 +106,16 @@ public class User{
     }
 
     private Boolean isLocked;
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+    
+
 }
 
 
