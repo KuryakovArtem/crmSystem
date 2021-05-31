@@ -2,6 +2,7 @@ package com.crm.crm.controllers;
 
 import com.crm.crm.models.Students;
 import com.crm.crm.repos.StudentsRepository;
+import com.crm.crm.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,15 +15,13 @@ import java.util.Optional;
 
 @Controller
 public class StudentsController {
-
     @Autowired
     private StudentsRepository studentsRepository;
-
 
     @GetMapping("/students")
     public String studentsMain(Model model){
         Iterable<Students> students = studentsRepository.findAll();
-        model.addAttribute("students",students);
+        model.addAttribute("students",students); // "students" -> "usr" не работает
         return "students-main";
     }
 
@@ -39,9 +38,10 @@ public class StudentsController {
                                  Model model){
 
         Students students = new Students(first_name, second_name, patronymic, balance);
-        studentsRepository.save(students);
+        studentsRepository.save(students);   //this is where students added to students table
         return  "redirect:/students";
     }
+
 
     @GetMapping("/students/{id}")
     public String studentsDetails(@PathVariable(value = "id") long id, Model model)    {
