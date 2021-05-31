@@ -10,6 +10,10 @@
 
 <div class="container mt-5">
     <h1>Instructors screen</h1>
+    <div th:each="el : ${instructors}" class="alert alert-info mt-5">
+        <h3 th:text="${el.first_name} + '    ' + ${el.second_name}"/>
+        <a th:href="'/instructors/' + ${el.id}" class="btn btn-warning">More</a>
+    </div>
 
 </div>
 
