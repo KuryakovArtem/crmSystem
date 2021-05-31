@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Instructors list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <div th:each="el : ${instructor}" class="alert alert-info mt-2">
+        <p th:text="'Name: ' + ${el.first_name}"/>
+        <p th:text="' Second Name: ' + ${el.second_name}"/>
+        <p th:text="'Patronymic: '+ ${el.patronymic}"/>
+        <p th:text="'Driver licence: ' + ${el.type_of_licence}"/>
+        <a th:href="'/instructors/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
+        <form th:action="'/instructors/' + ${el.id} + '/delete'" method="post">
+            <button class="btn btn-warning" type="submit">Delete</button>
+        </form>
+</div>
+
+<div class="container mt-5">
+    <a class="btn btn-secondary " href="/students/add" role="button">Add student</a>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
