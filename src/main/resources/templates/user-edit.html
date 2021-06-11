@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Edit role</h1>
+<!--    <form th:name="userEditForm" action="/user" onsubmit="return validateForm()" method="post" placeholder="">-->
+<!--        <input>-->
+<!--        <select  th:field="*{role}" name="userRole">-->
+<!--            <option th:each="p : ${role}" th:value="${p}" th:text="${p}"/>-->
+<!--        </select>-->
+<!--        <form th:action="'/user/' + ${user.id} + '/delete'" method="post">-->
+<!--            <button class="btn btn-warning" type="submit">Delete</button>-->
+<!--        </form>-->
+<!--        <button type="submit">Save</button>-->
+<!--    </form>-->
+
+    <div>
+        <form  th:name="userEditForm"  method="post">
+            <input type="text" th:value="*{user.userFirstName}" name="user_first_name" placeholder="${user.userFirstName}" class="form-control">
+                <select  th:field="*{role}" name="userRole">
+                          <option th:each="p : ${role}" th:value="${p}" th:text="${p}"/>
+                </select>
+            <form th:action="'/user/' + ${user.id} + '/delete'" method="post">
+                <button class="btn btn-warning" type="submit">Delete</button>
+            </form>
+            <input type="hidden" name="userId" value="user.id">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        </form>
+    </div>
+</div>
+
+
+</form>
+</body>
+</html>
