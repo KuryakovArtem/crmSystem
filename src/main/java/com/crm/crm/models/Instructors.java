@@ -1,20 +1,28 @@
 package com.crm.crm.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Instructors {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String first_name;
     private String second_name;
     private String patronymic;
     private String type_of_licence;
+    private String myGroup;
+
+//    @OneToOne(/*mappedBy = "teacher_id"*/) //поле в таблице groups (откуда?)
+//    private Groups groups;
+//
+//    public Groups getGroups() {
+//        return groups;
+//    }
+//
+//    public void setGroups(Groups groups) {
+//        this.groups = groups;
+//    }
 
 
     public Long getId() {
@@ -57,12 +65,24 @@ public class Instructors {
         this.type_of_licence = type_of_licence;
     }
 
+    public String getGroup() {
+        return myGroup;
+    }
+
+    public void setGroup(String group) {
+        this.myGroup = group;
+    }
+
     public Instructors(){}
 
-    public Instructors(String first_name, String second_name, String patronymic, String type_of_licence){
+    public Instructors(Long id, String first_name, String second_name, String patronymic, String type_of_licence, String group) {
+        this.id = id;
         this.first_name = first_name;
         this.second_name = second_name;
         this.patronymic = patronymic;
         this.type_of_licence = type_of_licence;
+        this.myGroup = group;
     }
+
+
 }
