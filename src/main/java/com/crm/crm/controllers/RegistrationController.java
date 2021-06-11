@@ -27,12 +27,13 @@ public class RegistrationController {
     private StudentsRepository studentsRepository;
     @Autowired
     InstructorsRepository instructorsRepository;
+
     @GetMapping("/registration")
     public String registration(Model model){
         User user = new User();
         model.addAttribute("user",user);
         List<String> listRole = Arrays.asList("STUDENT","TEACHER","ADMIN");
-        model.addAttribute("listRole",listRole);
+        model.addAttribute("listRole",listRole); // в html <select>
         return "registration";
     }
 
@@ -45,18 +46,28 @@ public class RegistrationController {
             return "registration";
         }
         if (userRole.equals("STUDENT")) {
-            Students students = new Students(user.getUserFirstName(), user.getUserSecondName(), user.getUserPatronymic(), 1000);
+            Students students = new Students(user.getUserFirstName(), user.getUserSecondName(), user.getUserPatronymic(), 1000, "");
             studentsRepository.save(students);
+            user.setRoles(Collections.singleton(UserRole.STUDENT));
         }
 
         if(userRole.equals("TEACHER"))
         {
-            Instructors instructors = new Instructors(user.getUserFirstName(), user.getUserSecondName(),user.getUserPatronymic(),"A");
+            Instructors instructors = new Instructors();
+            instructors.setFirst_name(user.getUserFirstName());
+            instructors.setSecond_name(user.getUserSecondName());
+            instructors.setPatronymic(user.getUserPatronymic());
+            instructors.setType_of_licence("A");
+            instructors.setGroup("");
+
             instructorsRepository.save(instructors);
+            user.setRoles(Collections.singleton(UserRole.TEACHER));
         }
+
+
         user.setActive(true);
 
-        user.setRoles(Collections.singleton(UserRole.STUDENT)); //This is a role placeholder
+        //user.setRoles(Collections.singleton(UserRole.STUDENT)); //This is a role placeholder
         userRepository.save(user);
 
         return "redirect:/login";
