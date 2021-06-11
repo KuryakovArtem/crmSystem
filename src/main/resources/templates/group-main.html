@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Reservation screen</title>
+    <title>Groups screen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -9,8 +9,16 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="container mt-5">
-    <h1>Reservation screen</h1>
+    <h1>Groups</h1>
+    <div th:each="el : ${my_group}" class="alert alert-dark mt-5">
+        <h3 th:text="${el.group_name}" />
+        <a th:href="'/group/' + ${el.id}" class="btn btn-outline-dark">More</a>
+    </div>
 </div>
+<div class="container ml-10">
+    <a class="btn btn-outline-dark" href="/group/add">New group</a>
+</div>
+
 
 <div th:insert="blocks/footer :: footer"></div>
 </body>
