@@ -40,7 +40,7 @@
 </head>
 
 <div class="container mt-5 mp-5">
-    <h1>Edit student</h1>
+    <h1>Set student group</h1>
     <div th:each="el : ${student}">
         <form method="post">
             <input type="text" th:value="${el.first_name}" name="first_name" placeholder="Input first name" class="form-control"><br>
@@ -48,6 +48,9 @@
             <input type="text" th:value="${el.patronymic}" name="patronymic" placeholder="Input patronymic" class="form-control"><br>
             <input type="number" th:value="${el.balance}" name="balance" placeholder="Input student's balance" class="form-control"><br>
             <button type="submit" class="btn btn-success">Edit</button>
+            <select name="my_group">
+                <option th:each="p : ${groupsList}" th:value="${p.id}" th:text="${p.group_name}" class="form-control" ></option>
+            </select><br>
         </form>
     </div>
 </div>
