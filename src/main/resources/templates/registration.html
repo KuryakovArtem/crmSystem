@@ -14,6 +14,7 @@
     }
     input[type=checkbox] {
         margin-center: 190px;
+        width: 200px;
     }
     button {
         padding: 5px;
@@ -63,21 +64,23 @@
 </div>
 -->
 
-<div class="container-fluid text-center mt-2 mp-5 ">
+
+
+<div class="container-fluid text-center mt-5 mp-5 ">
     <form th:action="@{/registration}" method="post" th:object="${user}">
         <h5>Create an account</h5>
-        <input type="text" th:field="*{username}" placeholder="Username" name="username" autofocus="autofocus"/> <br />
-        <input type="text" th:field="*{password}" placeholder="Password" name="password" autofocus="autofocus"/> <br />
-        <input type="text" th:field="*{email}" placeholder="Email" name="email" autofocus="autofocus"> <br />
-        <input type="text" th:field="*{userFirstName}" placeholder="Your name" name="userFirstName" autofocus="autofocus"> <br />
-        <input type="text" th:field="*{userSecondName}" placeholder="Your second name" name="userSecondName" autofocus="autofocus"> <br>
-        <input type="text" th:field="*{userPatronymic}" placeholder="Your patronymic" name="userPatronymic" autofocus="autofocus"> <br>
-        <select th:field="*{userRole}" name="userRole">
+        <input type="text" th:field="*{username}" placeholder="Username" name="username" autofocus="autofocus" class="mb-1"/><br> <!-- везде к классу можно приписать form-control и будет симпатичная бутовская фигня-->
+        <input type="text" th:field="*{password}" placeholder="Password" name="password" autofocus="autofocus" class="mb-1"/><br> <!-- не дописал тк широченный дропдаун получается -->
+        <input type="text" th:field="*{email}" placeholder="Email" name="email" autofocus="autofocus" class="mb-1"><br>
+        <input type="text" th:field="*{userFirstName}" placeholder="Your name" name="userFirstName" autofocus="autofocus" class="mb-1"><br>
+        <input type="text" th:field="*{userSecondName}" placeholder="Your second name" name="userSecondName" autofocus="autofocus" class="mb-1"><br>
+        <input type="text" th:field="*{userPatronymic}" placeholder="Your patronymic" name="userPatronymic" autofocus="autofocus" class="mb-1"><br>
+        <select  th:field="*{userRole}" name="userRole" >
             <option th:each="p : ${listRole}" th:value="${p}" th:text="${p}"/>
         </select>
         <br/>
         <p>
-            <input type="submit" value="Submit" class="btn btn-primary mb-5"/>
+            <input type="submit" value="Submit" class="btn btn-primary mt-1 mb-2"/>
         </p>
     </form>
 </div>
