@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students screen</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+
+<div class="container-fluid text-center mt-5 mb-5">
+    <h2>Create group</h2>
+    <form th:action="@{/group/add}" method="post" th:object="${group}" name="addGroupForm">
+        <input class="form-control mb-4" type="text" placeholder="Group name" name="group_name">
+
+        <select method="post" name="instructor" class="mr-5">
+            <option th:each="p : ${instructorsList}" th:value="${p.id}" th:text="${p.first_name} + '  ' + ${p.second_name}" />
+        </select>
+
+<!--        <div class="form-check" th:field = "${studentsIterable}">-->
+<!--                <div th:each="student : ${studentsIterable}" >-->
+<!--                    <div class="form-check">-->
+<!--                        <input class="form-check-input" type="checkbox" th:value="${student.id}" name="checkbox" >&lt;!&ndash;th:field="?"   th:field="*{student.id}"&ndash;&gt;-->
+<!--                        <label th:text="${student.first_name} + '  ' + ${student.second_name}"></label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--        </div>-->
+
+        <p>
+            <input type="submit" value="Submit" class="btn btn-primary mt-1 mb-2"/>
+        </p>
+
+    </form>
+    <a class="btn btn-outline-dark" href="/group">Back to group</a>
+</div>
+
+
+</body>
+</html>
