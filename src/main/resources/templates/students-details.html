@@ -1,6 +1,7 @@
 
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Students screen</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -46,10 +47,12 @@
         <p th:text="${el.second_name}"/>
         <p th:text="${el.patronymic}"/>
         <p th:text="${el.balance}"/>
-        <a th:href="'/students/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
-        <form th:action="'/students/' + ${el.id} + '/delete'" method="post">
-            <button class="btn btn-warning" type="submit">Delete</button>
-        </form>
+        <a class="nav-item" sec:authorize="hasAnyRole('ADMIN','TEACHER')">
+            <a th:href="'/students/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
+            <form th:action="'/students/' + ${el.id} + '/delete'" method="post">
+                <button class="btn btn-warning" type="submit">Delete</button>
+            </form>
+        </a>
     </div>
 </div>
 
