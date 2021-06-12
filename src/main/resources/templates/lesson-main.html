@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Lessons</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container ml-10">
+    <h3>List of lessons</h3>
+    <div th:each="g: ${groups}">
+        <h5 th:text="${g.group_name}"/>
+    </div>
+    <div th:each="el: ${lesson}" class="alert alert-dark mt-5" >
+        <H5 th:text="${el.date}"/>
+        <h5 th:text="${el.startTime}"/>
+    </div>
+
+    <a class="btn btn-outline-dark" sec:authorize="hasAnyRole('ADMIN','TEACHER')" href="/lesson/add">Add lesson</a>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

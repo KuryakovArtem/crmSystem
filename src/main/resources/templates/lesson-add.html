@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Add lesson</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div layout:fragment="content" class="container mySpace">
+    <form th:action="@{/lesson/add}" th:object="${lesson}" method="post">
+        <label for="Date">Group</label>
+        <div class="form-group">
+            <select name="my_group" class="form-control">
+                <option th:each="p: ${groups}" th:text="${p.group_name}" th:value="${p.id}" class="form-control"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Date" class="form-control-label">Date</label> <input
+                type="date" class="form-control" th:field="*{date}" id="date" />
+            <div class="text text-danger" th:if="${#fields.hasErrors('date')}"
+                 th:errors="*{date}"></div>
+        </div>
+        <div class="form-group">
+            <label for="startTime" class="form-control-label">StartTime</label>
+            <input type="time" class="form-control" th:field="*{startTime}"
+                   id="startTime" />
+            <div class="text text-danger"
+                 th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}"></div>
+
+        </div>
+        <div class="form-group">
+            <label for="stopTime" class="form-control-label">Stop Time</label> <input
+                type="time" class="form-control" th:field="*{stopTime}"
+                id="stopTime" />
+            <div class="text text-danger"
+                 th:if="${#fields.hasErrors('stopTime')}" th:errors="*{stopTime}"></div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="form-control-label">Description</label>
+            <textarea   class="form-control" th:field="*{description}"
+                        id="description">  </textarea>
+            <div class="text text-danger"
+                 th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
