@@ -14,7 +14,7 @@
     <form th:action="@{/group/add}" method="post" th:object="${group}" name="addGroupForm">
         <input class="form-control mb-4" type="text" placeholder="Group name" name="group_name">
 
-        <select method="post" name="instructor" class="mr-5">
+        <select method="post" name="instructor" class="mr-5 form-control">
             <option th:each="p : ${instructorsList}" th:value="${p.id}" th:text="${p.first_name} + '  ' + ${p.second_name}" />
         </select>
 

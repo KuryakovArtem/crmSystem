@@ -1,13 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
 <div th:fragment="header">
     <div class="d-flex flex-row flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h5 class="my-0 mr-md-auto font-weight-normal font-weight-bold">MAX autoschool</h5>
         <nav class="my-2 my-md-0 mr-md-3">
+            <a class="nav-item" sec:authorize="hasRole('ADMIN')">
+                <a class="p-2 text-dark fond-weight-bold" href="/users">Users</a>
+            </a>
             <a class="p-2 text-dark font-weight-bold" href="/">Home</a>
-            <a class="p-2 text-dark font-weight-bold" href="/group">Group</a>
-            <a class="p-2 text-dark font-weight-bold" href="/schedule">Schedule</a>
+            <a class="nav-item" sec:authorize="hasAnyRole('ADMIN','TEACHER')">
+                <a class="p-2 text-dark font-weight-bold" href="/group">Group</a>
+            </a>
+            <a class="p-2 text-dark font-weight-bold" href="/lesson">Lessons</a>
             <a class="p-2 text-dark font-weight-bold" href="/instructors">Instructors</a>
             <a class="p-2 text-dark font-weight-bold" href="/students">Students</a>
+            <a class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="p-2 text-dark font-weight-bold" href="/profile">Profile</a>
+            </a>
+
         </nav>
-        <a class="btn btn-outline-dark" href="/registration">Registration</a>
+        <a class="nav-item" sec:authorize="!isAuthenticated()">
+            <a class="btn btn-outline-dark" href="/registration">Registration</a>
+        </a>
+        <form class="form-inline my-2" form-method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+            <button class="btn btn-outline-dark my-2" type="submit">Logout</button>
+        </form>
+
+
+
     </div>
 </div>

@@ -11,7 +11,7 @@
 <div class="container mt-5">
     <div th:each="el : ${instructor}" class="alert alert-info mt-2">
         <p th:text="'Name: ' + ${el.first_name}"/>
-        <p th:text="' Second Name: ' + ${el.second_name}"/>
+        <p th:text="'Second Name: ' + ${el.second_name}"/>
         <p th:text="'Patronymic: '+ ${el.patronymic}"/>
         <p th:text="'Driver licence: ' + ${el.type_of_licence}"/>
         <a th:href="'/instructors/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
