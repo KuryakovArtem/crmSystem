@@ -1,16 +1,6 @@
 package com.crm.crm.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 
 
@@ -21,13 +11,19 @@ public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String username;
-    private String userFirstName;
-    private String userSecondName;
-    private String userPatronymic;
-    private String email;
-    private String password;
-    private String userRole;
+    private java.lang.String username;
+    private java.lang.String userFirstName;
+    private java.lang.String userSecondName;
+    private java.lang.String userPatronymic;
+    private java.lang.String email;
+    private java.lang.String password;
+    private java.lang.String userRole;
+    //private String lessons;
+
+
+
+    private String activationCode;
+
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -41,51 +37,51 @@ public class User{
         this.id = id;
     }
 
-    public String getUsername() {
+    public java.lang.String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(java.lang.String username) {
         this.username = username;
     }
 
-    public String getUserFirstName() {
+    public java.lang.String getUserFirstName() {
         return userFirstName;
     }
 
-    public void setUserFirstName(String userFirstName) {
+    public void setUserFirstName(java.lang.String userFirstName) {
         this.userFirstName = userFirstName;
     }
 
-    public String getUserSecondName() {
+    public java.lang.String getUserSecondName() {
         return userSecondName;
     }
 
-    public void setUserSecondName(String userSecondName) {
+    public void setUserSecondName(java.lang.String userSecondName) {
         this.userSecondName = userSecondName;
     }
 
-    public String getUserPatronymic() {
+    public java.lang.String getUserPatronymic() {
         return userPatronymic;
     }
 
-    public void setUserPatronymic(String userPatronymic) {
+    public void setUserPatronymic(java.lang.String userPatronymic) {
         this.userPatronymic = userPatronymic;
     }
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 
-    public String getPassword() {
+    public java.lang.String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(java.lang.String password) {
         this.password = password;
     }
 
@@ -107,14 +103,29 @@ public class User{
 
     private Boolean isLocked;
 
-    public String getUserRole() {
+    public java.lang.String getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(String userRole) {
+    public void setUserRole(java.lang.String userRole) {
         this.userRole = userRole;
     }
-    
+
+//    public String getLessons() {
+//        return lessons;
+//    }
+//
+//    public void setLessons(String lessons) {
+//        this.lessons = lessons;
+//    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
 
 }
 
