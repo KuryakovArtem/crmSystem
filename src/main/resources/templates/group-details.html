@@ -4,6 +4,11 @@
     <title>Group</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body{
+    background: #F5F7FA;
+    }
+</style>
 </head>
 
 <body>
@@ -13,7 +18,7 @@
     <div th:each="el : ${group}" class="alert alert-dark mt-3">
         <h3 th:text ="*{el.group_name}"/>
         <div th:each="s : ${inGroupStudents}">
-            <p th:text="*{s.second_name} + '   ' + *{s.first_name}"></p>
+            <h5 th:text="*{s.second_name} + '   ' + *{s.first_name}"></h5>
         </div>
 
     </div>

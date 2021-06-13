@@ -4,6 +4,11 @@
     <title>Edit</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body{
+    background: #F5F7FA;
+    }
+</style>
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
@@ -43,14 +48,14 @@
     <h1>Set student group</h1>
     <div th:each="el : ${student}">
         <form method="post">
-            <input type="text" th:value="${el.first_name}" name="first_name" placeholder="Input first name" class="form-control"><br>
-            <input type="text" th:value="${el.second_name}" name="second_name" placeholder="Input second name" class="form-control"><br>
-            <input type="text" th:value="${el.patronymic}" name="patronymic" placeholder="Input patronymic" class="form-control"><br>
-            <input type="number" th:value="${el.balance}" name="balance" placeholder="Input student's balance" class="form-control"><br>
-            <button type="submit" class="btn btn-success">Edit</button>
-            <select name="my_group">
+            <input type="text" th:value="${el.first_name}" name="first_name" placeholder="Input first name" class="form-control"  readonly><br>
+            <input type="text" th:value="${el.second_name}" name="second_name" placeholder="Input second name" class="form-control"  readonly><br>
+            <input type="text" th:value="${el.patronymic}" name="patronymic" placeholder="Input patronymic" class="form-control" readonly><br>
+            <input type="number" th:value="${el.balance}" name="balance" placeholder="Input student's balance" class="form-control" readonly><br>
+            <select name="my_group" class="form-control">
                 <option th:each="p : ${groupsList}" th:value="${p.id}" th:text="${p.group_name}" class="form-control" ></option>
             </select><br>
+            <button type="submit" class="btn btn-success mt-1">Edit</button>
         </form>
     </div>
 </div>
