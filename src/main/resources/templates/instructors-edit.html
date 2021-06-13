@@ -4,12 +4,17 @@
     <title>Edit instructor</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body{
+    background: #F5F7FA;
+    }
+</style>
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
 
 
-<div class="container mt-5 mb-5">
+<div class="container  mt-5 mb-5">
     <h1>Edit instructor</h1>
     <div th:each="el : ${instructors}">
         <form method="post">
@@ -17,7 +22,7 @@
             <input type="text" th:value="${el.second_name}" placeholder="Input second name" class="form-control"><br>
             <input type="text" th:value="${el.patronymic}" placeholder="Input patronymic" class="form-control"><br>
             <input type="text" th:value="${el.type_of_licence}" placeholder="Input type of licence" class="form-control"><br>
-            <button type="submit" class="btn btn-success">Edit</button>
+            <button type="submit" class="btn btn-outline-dark">Edit</button>
         </form>
     </div>
 </div>
