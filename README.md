@@ -5,7 +5,7 @@
 
 ![Home screen](https://user-images.githubusercontent.com/50050960/127661417-7631beca-ff97-4701-b13d-6f8c5a7dacd4.png)
 
-This project is made with SpringBoot and Thymeleaf template engine
+This project is made with [SpringBoot](https://spring.io/projects/spring-boot) and [Thymeleaf](https://www.thymeleaf.org/) template engine
 
 ## User insruction
 
