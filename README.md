@@ -15,5 +15,6 @@ This project is made with SpringBoot and Thymeleaf template engine
 4. If user is teacher
     - create classes
     - create groups
+5. Administrator can use teachers functions and moderate students and teachers
 
 >This is not the final version of the project and many more features will be added in the future
