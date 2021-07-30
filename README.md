@@ -1,6 +1,5 @@
-# crmSystem
-Driving school crm system
-## This project is made to simplify the interaction between students and instructors and administration in driving school.
+#Driving school crm v1.0
+### This project is made with java Sring to simplify the interaction between students and instructors and administration in driving school.
 
 - When user comes to the site
 
